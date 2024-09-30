@@ -1,0 +1,470 @@
+@font-face {
+    font-family: 'GT Ultra';
+    src: url('fonts/GTUltra-BlackItalic.woff2') format('woff2'),
+    url('fonts/GTUltra-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra';
+    src: url('fonts/GTUltra-Light.woff2') format('woff2'),
+    url('fonts/GTUltra-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Recoleta';
+    src: url('fonts/Recoleta-Medium.woff2') format('woff2'),
+    url('fonts/Recoleta-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Mono';
+    src: url('fonts/VulfMono-BoldItalic.woff2') format('woff2'),
+        url('fonts/VulfMono-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Mono';
+    src: url('fonts/VulfMono-Light.woff2') format('woff2'),
+        url('fonts/VulfMono-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Mono';
+    src: url('fonts/VulfMono-BlackItalic.woff2') format('woff2'),
+        url('fonts/VulfMono-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Mono';
+    src: url('fonts/VulfMono-LightItalic.woff2') format('woff2'),
+        url('fonts/VulfMono-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Sans';
+    src: url('fonts/VulfSans-Black.woff2') format('woff2'),
+        url('fonts/VulfSans-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Sans';
+    src: url('fonts/VulfSans-BlackItalic.woff2') format('woff2'),
+        url('fonts/VulfSans-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Sans';
+    src: url('fonts/VulfSans-BoldItalic.woff2') format('woff2'),
+        url('fonts/VulfSans-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Sans';
+    src: url('fonts/VulfSans-Bold.woff2') format('woff2'),
+        url('fonts/VulfSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Sans';
+    src: url('fonts/VulfSans-Medium.woff2') format('woff2'),
+        url('fonts/VulfSans-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Sans';
+    src: url('fonts/VulfSans-Light.woff2') format('woff2'),
+        url('fonts/VulfSans-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Sans';
+    src: url('fonts/VulfSans-Italic.woff2') format('woff2'),
+        url('fonts/VulfSans-Italic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Sans';
+    src: url('fonts/VulfSans-MediumItalic.woff2') format('woff2'),
+        url('fonts/VulfSans-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Sans';
+    src: url('fonts/VulfSans-LightItalic.woff2') format('woff2'),
+        url('fonts/VulfSans-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vulf Sans';
+    src: url('fonts/VulfSans-Regular.woff2') format('woff2'),
+        url('fonts/VulfSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+@font-face {
+    font-family: 'Recoleta';
+    src: url('fonts/Recoleta-SemiBold.woff2') format('woff2'),
+    url('fonts/Recoleta-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Zipper';
+    src: url('fonts/Zipper Std.otf') format('opentype');
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Recoleta';
+    src: url('fonts/Recoleta-Black.woff2') format('woff2'),
+    url('fonts/Recoleta-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Recoleta';
+    src: url('fonts/Recoleta-Regular.woff2') format('woff2'),
+    url('fonts/Recoleta-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Recoleta';
+    src: url('fonts/Recoleta-Bold.woff2') format('woff2'),
+    url('fonts/Recoleta-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Recoleta';
+    src: url('fonts/Recoleta-Light.woff2') format('woff2'),
+    url('fonts/Recoleta-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Recoleta';
+    src: url('fonts/Recoleta-Thin.woff2') format('woff2'),
+    url('fonts/Recoleta-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'GT Ultra';
+    src: url('fonts/GTUltra-LightItalic.woff2') format('woff2'),
+    url('fonts/GTUltra-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra';
+    src: url('fonts/GTUltra-Black.woff2') format('woff2'),
+    url('fonts/GTUltra-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra';
+    src: url('fonts/GTUltra-BoldItalic.woff2') format('woff2'),
+    url('fonts/GTUltra-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra';
+    src: url('fonts/GTUltra-Bold.woff2') format('woff2'),
+    url('fonts/GTUltra-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Fine';
+    src: url('fonts/GTUltraFine-BlackItalic.woff2') format('woff2'),
+    url('fonts/GTUltraFine-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Fine';
+    src: url('fonts/GTUltraFine-Black.woff2') format('woff2'),
+    url('fonts/GTUltraFine-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Ultra';
+    src: url('fonts/GTUltra-Ultra.woff2') format('woff2'),
+    url('fonts/GTUltra-Ultra.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra';
+    src: url('fonts/GTUltra-Regular.woff2') format('woff2'),
+    url('fonts/GTUltra-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Fine';
+    src: url('fonts/GTUltraFine-BoldItalic.woff2') format('woff2'),
+    url('fonts/GTUltraFine-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra';
+    src: url('fonts/GTUltra-RegularItalic.woff2') format('woff2'),
+    url('fonts/GTUltra-RegularItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra';
+    src: url('fonts/GTUltra-Thin.woff2') format('woff2'),
+    url('fonts/GTUltra-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Fine';
+    src: url('fonts/GTUltraFine-Bold.woff2') format('woff2'),
+    url('fonts/GTUltraFine-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Fine';
+    src: url('fonts/GTUltraFine-Thin.woff2') format('woff2'),
+    url('fonts/GTUltraFine-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Median';
+    src: url('fonts/GTUltraMedian-Black.woff2') format('woff2'),
+    url('fonts/GTUltraMedian-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Fine';
+    src: url('fonts/GTUltraFine-RegularItalic.woff2') format('woff2'),
+    url('fonts/GTUltraFine-RegularItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Median';
+    src: url('fonts/GTUltraMedian-BlackItalic.woff2') format('woff2'),
+    url('fonts/GTUltraMedian-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Fine';
+    src: url('fonts/GTUltraFine-Regular.woff2') format('woff2'),
+    url('fonts/GTUltraFine-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Fine';
+    src: url('fonts/GTUltraFine-LightItalic.woff2') format('woff2'),
+    url('fonts/GTUltraFine-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Fine';
+    src: url('fonts/GTUltraFine-Light.woff2') format('woff2'),
+    url('fonts/GTUltraFine-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Fine Ultra';
+    src: url('fonts/GTUltraFine-Ultra.woff2') format('woff2'),
+    url('fonts/GTUltraFine-Ultra.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Median';
+    src: url('fonts/GTUltraMedian-BoldItalic.woff2') format('woff2'),
+    url('fonts/GTUltraMedian-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Median';
+    src: url('fonts/GTUltraMedian-LightItalic.woff2') format('woff2'),
+    url('fonts/GTUltraMedian-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Median';
+    src: url('fonts/GTUltraMedian-Bold.woff2') format('woff2'),
+    url('fonts/GTUltraMedian-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Median';
+    src: url('fonts/GTUltraMedian-RegularItalic.woff2') format('woff2'),
+    url('fonts/GTUltraMedian-RegularItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Median';
+    src: url('fonts/GTUltraMedian-Regular.woff2') format('woff2'),
+    url('fonts/GTUltraMedian-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Median';
+    src: url('fonts/GTUltraMedian-Light.woff2') format('woff2'),
+    url('fonts/GTUltraMedian-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Median Ultra';
+    src: url('fonts/GTUltraMedian-Ultra.woff2') format('woff2'),
+    url('fonts/GTUltraMedian-Ultra.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT Ultra Median';
+    src: url('fonts/GTUltraMedian-Thin.woff2') format('woff2'),
+    url('fonts/GTUltraMedian-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+

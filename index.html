@@ -1,0 +1,1058 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="description" content="WebUI: A Dataset for Enhancing Visual UI Understanding with Web Semantics">
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DreamStruct: Understanding Slides and UIs via Synthetic Data Generation</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="static/favicon.png">
+    <!-- <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"> -->
+    <link rel="manifest" href="site.webmanifest">
+    <!-- F5FBF8 -->
+    <meta name="theme-color" content="#f5ece5">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#276FBF">
+    <meta name="msapplication-TileColor" content="#276FBF">
+    <link rel="stylesheet" href="fonts.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,900" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-intersection@0.2.0/dist/js/splide-extension-intersection.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/splide.min.css">
+    <!-- <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/3.27.0/gradio.js"></script> -->
+    <style>
+        .material-symbols-rounded {
+            font-variation-settings: 'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 48
+        }
+
+
+        @font-face {
+            font-family: 'Code';
+            /* src: url('/fonts/IBMPlexMono-Light.ttf'); */
+            src: url('fonts/SourceSansPro-Light.ttf');
+        }
+
+        .tooltip-inner {
+            /* font-family: 'GT Ultra', sans-serif !important; */
+            font-family: 'Source Sans Pro', sans-serif !important;
+        }
+
+
+        h3 span i, h5 span i {
+            order: -1;
+        }
+
+        body {
+            position: relative;
+        }
+
+        html, body {
+            /* font-family: 'GT Ultra', sans-serif !important; */
+            font-family: 'Source Sans Pro', sans-serif !important;
+            font-weight: 200;
+            font-size: 20px;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            color: #1f1e1d;
+            background-color: #e8f5ea
+            /* background-color: #dfe9d9; */
+
+            /*     background-color: #1f1e1d;*/
+            /*color: #d7c0af;*/
+            /*font-family: sans-serif;*/
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        a {
+            color: #6522c2ec !important;
+            text-decoration: none;
+            font-weight: 300;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #184477 !important;
+            /*font-weight: 700;*/
+        }
+
+        /* Heart beat animation */
+
+
+        .heart:hover div * {
+            color: #B33951 !important;
+            cursor: initial !important;
+        }
+
+        .authors {
+            display: flex;
+            justify-content: center;
+            /* max-width: 700px; */
+            flex-wrap: wrap;
+            margin: 0 auto;
+            font-size: 1.1em;
+            
+        }
+
+        .autoplaytoggle {
+            margin: -1rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .autoplaytoggle button {
+            align-items: center;
+        }
+
+        .autoplaytoggle span.material-symbols-rounded {
+
+            font-size: 1.25rem !important;
+        }
+
+        .insts {
+            display: flex;
+            justify-content: center;
+        }
+
+        header h1 {
+            margin-bottom: 0;
+            font-weight: 700;
+        }
+
+        .carousel-item img {
+            max-width: 100%;
+        }
+
+        .insts {
+            font-size: 17px;
+        }
+
+        .linkscontainer {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .links {
+            /*font-size: 5rem;*/
+            /*margin: 0 -20px;*/
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .links a span.material-symbols-rounded {
+            max-width: 25px;
+        }
+
+        span.material-symbols-rounded {
+            max-width: 25px;
+        }
+
+        .links a {
+            display: inline-flex;
+            /*flex-direction: column;*/
+            align-items: center;
+            text-decoration: none;
+            border-radius: 5px;
+            padding: 5px 7px;
+            color: #f6f3f1 !important;
+            /* font-family: 'GT Ultra', sans-serif !important; */
+            font-family: 'Source Sans Pro', sans-serif !important;
+            font-weight: 200;
+            /*margin: 0 10px;*/
+            transition: transform .2s;
+            background-color: rgba(var(--btn-bgc), 1);
+        }
+
+
+        .links a:nth-child(1) {
+            /* --btn-bgc: 237, 100, 90; */
+            --btn-bgc: 237,167,201;
+        }
+
+        .links a:hover {
+            transform: scale(1.2);
+            color: #f6f3f1 !important;
+        }
+
+        .links a:active {
+            transform: scale(1.3);
+        }
+
+        .links a:nth-child(2) {
+            /* --btn-bgc: 47, 138, 196; */
+            --btn-bgc: 123,146,220;
+            
+        }
+
+        .links a:nth-child(3) {
+            /* --btn-bgc: 229, 134, 6; */
+            /* --btn-bgc: 245,206,90; */
+            --btn-bgc: 235,194,12;
+        }
+
+        .links a:nth-child(4) {
+            /* --btn-bgc: 133, 180, 51; */
+            --btn-bgc: 227,90,67;
+        }
+
+        .links a:nth-child(5) {
+            /* --btn-bgc: 204, 97, 176; */
+            --btn-bgc: 79,49,45;
+        }
+
+        .links a span.material-symbols-rounded {
+            margin-right: .25rem;
+        }
+
+        .links a:not(:last-child) {
+            /*margin-right: 20px;*/
+        }
+
+
+        .links .material-symbols-rounded {
+            font-size: 1.25rem;
+        }
+
+
+        .links i {
+            font-size: 28px;
+        }
+
+        .fig {
+            width: 100%;
+            display: block;
+            padding: 0 10px;
+            margin: 0 auto;
+        }
+
+        img.arch {
+            max-width: 500px;
+        }
+
+        img.blobs {
+            max-width: 350px;
+        }
+
+        .teaser {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .teaser + section {
+            margin-top: 1rem;
+        }
+
+        .teaser video {
+            max-width: 600px;
+            width: 100%;
+        }
+        .teaser img {
+            /* max-width:  600px; */
+
+            /* max-width:  750px; */
+            max-width:  950px;
+            /* max-height:  480px; */
+            
+            width: 100%;
+        }
+
+        img.teaser {
+            max-width: 90%;
+        }
+
+        .abstract-imgs .col {
+            display: flex;
+            align-items: center;
+        }
+
+        .videowrapper {
+            float: none;
+            clear: both;
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%;
+            padding-top: 25px;
+            height: 0;
+        }
+
+        .wrapwrap {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .videowrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .abstract-capt {
+            font-size: 0.8rem;
+            display: block !important;
+            text-align: center;
+        }
+
+        .latex {
+            display: inline;
+            font-family: 'Math', monospace;
+            font-style: italic;
+        }
+
+        p {
+            margin: 0 !important;
+        }
+
+        .bs-tooltip-end {
+            margin-left: 3px !important;
+        }
+
+        section {
+            margin: 2rem 0;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        section h5 {
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        .iconbutton {
+            padding: 0.1rem 0.3rem;
+            display: flex;
+            border: none !important;
+            background-color: #4B495B !important;
+            color: #f5ece5 !important;
+            /* font-family: 'GT Ultra', sans-serif !important; */
+            font-family: 'Source Sans Pro', sans-serif !important;
+            font-weight: 600;
+            text-decoration: none !important;
+        }
+
+        .iconbutton span.material-symbols-rounded {
+            font-size: 1.5rem;
+            /* font-weight: 700; */
+        }
+
+        .playpause span.material-symbols-rounded {
+            font-variation-settings: 'wght' 700;
+
+
+        }
+
+        .iconbutton span.material-symbols-rounded:hover {
+            color: #faf6f2 !important;
+        }
+
+        .iconbutton:hover, .iconbutton:focus {
+            background-color: #2E2E38 !important;
+            border-color: none !important;
+            color: #faf6f2 !important;
+        }
+
+        .iconbutton:focus {
+
+        }
+
+        .iconbutton:active {
+            background-color: #09090B !important;
+
+        }
+
+        [data-clipboard-target] {
+            cursor: pointer;
+        }
+
+        [data-clipboard-target]:hover {
+            color: #276FBF !important;
+        }
+
+        /* .emptyrooms {
+             max-width: 80%;
+         }*/
+
+        .emptyrooms {
+            display: flex;
+            /*justify-content: center;*/
+            align-items: flex-start;
+            background-color: #f5ece5;
+        }
+
+        .playpause {
+            flex-shrink: 0;
+        }
+
+        .emptyrooms img:first-child {
+            width: 16.196944%;
+            margin-right: 0.6%;
+        }
+
+        .emptyrooms img:last-child {
+            width: 82.8862479%;
+        }
+
+
+        section h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        section h5, section h3 {
+            justify-content: space-between;
+
+            display: flex;
+            align-items: center;
+        }
+
+        h3, h5 {
+            scroll-margin-top: 25px;
+            /*display: inline-block;*/
+        }
+
+        h3[data-exclude-link], h5[data-exclude-link] {
+            cursor: initial;
+        }
+
+        h3 span, h5 span {
+            display: inline-flex;
+            align-items: center;
+            /* cursor: pointer; */
+        }
+
+        /* h3 span:hover, h5 span:hover {
+
+            color: #276FBF !important;
+        } */
+
+        /*
+                h3[data-exclude-link]:hover, h5[data-exclude-link]:hover {
+                    color: initial !important;
+                }*/
+
+        .carousel {
+            margin: 1rem 0;
+        }
+
+        .ltx {
+            vertical-align: baseline;
+        }
+
+        .cit {
+            background-color: rgba(26, 25, 31, 0.05);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+            display: inline-block;
+            margin: 0 auto;
+            overflow-y: hidden;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Source Sans Pro', monospace;
+        }
+
+        .cit_cont {
+            display: flex;
+        }
+
+        .video-container {
+            position: relative;
+        }
+
+        /* .video-container .video-border {
+             position: absolute;
+             width: 100%;
+             height: 100%;
+             top: 0;
+             left: 0;
+             box-shadow: inset 0px 0px 0px 6px #f5ece5;
+         }*/
+
+        .video-container video {
+            width: 100%;
+            display: block;
+            clip-path: inset(5px 5px);
+        }
+
+        .video-container img {
+            width: 100%;
+        }
+
+        .splide > * {
+            font-weight: 500;
+            position: initial;
+        }
+
+        .splide__arrow {
+            position: initial;
+            background: none;
+            /*opacity: 1;*/
+            -webkit-transform: none;
+            -moz-transform: none;
+            -ms-transform: none;
+            -o-transform: none;
+            transform: none;
+            font-size: 1.25rem;
+            justify-content: end;
+            width: 1.5em;
+        }
+
+        .splide__arrow--prev {
+            justify-content: left;
+        }
+
+        .splide__slide {
+            height: 0;
+        }
+
+        .splide__slide.is-visible {
+            height: auto;
+        }
+
+        .move-cont {
+            display: flex;
+        }
+
+        .move-cont > video {
+            max-width: 100%;
+        }
+
+        .splide__pagination__page.is-active {
+            background: #000;
+        }
+
+        .splide__pagination__page {
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .splide__pagination {
+            margin-top: 0.25rem;
+        }
+
+        .splide__pagination__page:hover {
+            background: #aaa;
+            transform: scale(1.2);
+        }
+
+        .splide__track_and_arrows {
+            display: flex;
+        }
+
+        .splide__arrows {
+            display: flex;
+            align-items: center;
+        }
+
+        .styletransfer {
+            display: grid;
+            grid-row-gap: .5rem;
+            grid-template-columns: 1fr 20px 1fr 1fr 1fr 20px 1fr 1fr 1fr;
+        }
+
+        .inversion {
+            display: grid;
+            /*grid-row-gap: .5rem;*/
+            /*grid-template-columns: 1fr 20px 1fr 1fr 1fr 20px 1fr 1fr 1fr;*/
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .styletransfer img {
+            max-width: 100%;
+            clip-path: inset(2px 2px);
+        }
+
+        .inversion span {
+            text-align: center;
+        }
+
+        .inversion img {
+            max-width: 100%;
+            clip-path: inset(2px 2px);
+        }
+
+
+        #inversion ~ .splide img {
+            max-width: 100%;
+            padding: 0.3rem;
+        }
+
+        .styletransfer span {
+            text-align: center;
+        }
+
+        .styletransfer span:nth-child(2) {
+            grid-column-start: 3;
+            grid-column-end: 6;
+        }
+
+        .styletransfer span:nth-child(3) {
+            grid-column-start: 7;
+            grid-column-end: 10;
+        }
+
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 1050px;
+            }
+        }
+
+        .inversion_subheader {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .inversion_subheader:not(:first-of-type) {
+            margin-top: 0.2rem;
+        }
+
+        .inversion_subheader + .splide {
+            margin: 0.2rem 0 !important;
+        }
+
+        /*
+                .move-cont .video-container:nth-child(8), .move-cont .video-container:nth-child(7) {
+                    display: none;
+                }*/
+
+        @media (max-width: 991px) {
+            /*
+                        .move-cont .video-container:nth-child(5), .move-cont .video-container:nth-child(6) {
+                            display: none;
+                        }*/
+            .move-cont > video {
+                max-width: 150%;
+                clip-path: inset(0 33.333333% 0 0);
+            }
+
+            header h3 {
+                font-size: 1.5rem;
+            }
+
+            .cit {
+                /*font-size: 12px !important;*/
+            }
+
+            .emptyrooms img:last-child {
+                width: 99.6% !important;
+            }
+
+            .emptyrooms img:first-child {
+                width: 19.46% !important;
+                margin-right: 0.7522% !important;
+            }
+
+            .styletransfer {
+                display: grid;
+                grid-template-columns: 1fr 15px 1fr 1fr 15px 1fr 1fr !important;
+            }
+
+            .styletransfer img:nth-child(9n+3), .styletransfer img:nth-child(9n-1) {
+                display: none;
+            }
+
+            .styletransfer span:nth-child(2) {
+                grid-column-start: 3;
+                grid-column-end: 5;
+            }
+
+            .styletransfer span:nth-child(3) {
+                grid-column-start: 6;
+                grid-column-end: 8;
+            }
+        }
+
+        .author {
+            padding: 0 0.6rem;
+        }
+
+        @media (max-width: 767px) {
+            html, body {
+
+                /*font-size: 16px;*/
+            }
+
+            .author {
+                font-size: 18px;
+            }
+
+            .insts {
+                font-size: 16px;
+            }
+
+            /*.move-cont .video-container:nth-child(4) {
+                display: none;
+            }*/
+            .move-cont > video {
+                max-width: 200%;
+                clip-path: inset(0 50% 0 0);
+            }
+
+            .inversion *:nth-child(5n+2) {
+                display: none;
+            }
+
+            .inversion {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+
+            .emptyrooms img:last-child {
+                width: 124.477307% !important;
+            }
+
+            .emptyrooms img:first-child {
+                width: 24.3243243% !important;
+                margin-right: 0.9% !important;
+            }
+
+            .styletransfer {
+                display: grid;
+                grid-template-columns: 1fr 10px 1fr 10px 1fr !important;
+            }
+
+            .styletransfer img:nth-child(9n+2), .styletransfer img:nth-child(9n-2) {
+                display: none;
+            }
+
+            .styletransfer span:nth-child(2) {
+                grid-column-start: 3;
+                grid-column-end: 4;
+            }
+
+            .styletransfer span:nth-child(3) {
+                grid-column-start: 5;
+                grid-column-end: 6;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .links a span.material-symbols-rounded {
+                max-width: 20px;
+            }
+
+            .links {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 510px) {
+            /*
+                        .move-cont .video-container:nth-child(3) {
+                            display: none;
+                        }*/
+            .move-cont > video {
+                max-width: 300%;
+                clip-path: inset(0 66.6666666% 0 0);
+            }
+
+
+            .inversion {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .inversion span:nth-child(n+4) {
+                grid-row: 3;
+            }
+
+            .links .material-symbols-rounded {
+                /*display: none;*/
+                font-size: 1rem;
+            }
+
+            .links a span.material-symbols-rounded {
+                max-width: 18px;
+            }
+
+        }
+
+        @media (max-width: 399px) {
+
+        }
+
+        @media (max-width: 380px) {
+            /*.links .material-symbols-rounded {*/
+            /*    display: none;*/
+            /*    padding: 5px 10px;*/
+            /*    !*font-size: 1rem;*!*/
+            /*}*/
+        }
+
+        @media (max-width: 575px) {
+
+            img.blobs {
+                max-width: 300px;
+            }
+
+            .emptyrooms img:last-child {
+                width: 165.941536% !important;
+            }
+
+            .emptyrooms img:first-child {
+                width: 32.4269205% !important;
+                margin-right: 1.15% !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .abstract-imgs .col-md-7 {
+                border-right: 1px solid #1f1e1d;
+            }
+
+            img.arch, img.blobs {
+                max-width: 600px;
+            }
+
+        }
+        .py-3{
+            padding-bottom: 0rem!important;
+        }
+        .mt-4 {
+            margin-top: 0rem!important;
+        }
+
+
+
+    </style>
+</head>
+<body class="h-100 d-flex flex-column">
+<main class="container flex-grow-1" style>
+    <header class="py-3">
+        
+        
+        <h2 class="mt-1 mt-sm-2 mt-md-3" style="font-weight: 200"><span style="font-weight: 900; margin-right: 3px;">DreamStruct:  </span>Understanding Slides and User Interfaces via Synthetic Data Generation</h2>
+        <div class="authors mt-3">
+            <div class="author"><a href="https://www.yihaopeng.tw/" style="font-weight: 200">Yi-Hao Peng</a><sup>1</sup></div>
+            <div class="author"><a href="https://oaishi.github.io/" style="font-weight: 200">Faria Huq</a><sup>1</sup></div>
+            <div class="author"><a href="https://yuejiang-nj.github.io/" style="font-weight: 200">Yue Jiang</a><sup>3</sup></div>
+            <div class="author"><a href="https://jasonwunix.com/" style="font-weight: 200">Jason Wu</a><sup>1</sup></div>
+            <div class="author"><a href="https://www.linkedin.com/in/amanda--li/" style="font-weight: 200">Amanda Li</a><sup>1</sup></div>
+            <div class="author"><a href="https://www.cs.cmu.edu/~jbigham/" style="font-weight: 200">Jeffrey Bigham</a><sup>1</sup></div>
+            <div class="author"><a href="https://amypavel.com/" style="font-weight: 200">Amy Pavel</a><sup>2</sup></div>
+        </div>
+        <div class="insts mt-1">
+            <div class="inst pe-3"><sup>1</sup>Carnegie Mellon University</div>
+            <div class="inst pe-3"><sup>2</sup>University of Texas, Austin</div>
+            <div class="inst pe-3"><sup>3</sup>Aalto University</div>
+        </div>
+        <div class="insts mt-1">
+            <b>The 18th European Conference on Computer Vision (ECCV 2024)</b>
+        </div>
+        <section class="teaser mt-2">
+            <!-- <video src="static/webui_intro.mp4" alt="A short slide animation showing the overivew of WebUI." data-no-pause autoplay playsinline muted loop></video> -->
+             <img src="static/diagram_new.png" alt="A diagram showing the pipeline of dreamstruct."></image>
+        </section>
+        <div class="linkscontainer">
+            <div class="links mt-4">
+                <a href="https://huggingface.co/datasets?search=biglab/dreamstruct" target="_blank" style="font-weight: 600"><span class="material-symbols-rounded">science</span><span>Dataset</span></a>
+                <a href="" target="_blank" style="font-weight: 600"><span class="material-symbols-rounded">sports_esports</span><span>Models</span></a>
+                <a href="https://github.com/yihaop/dreamstruct" target="_blank" style="font-weight: 600"><span class="material-symbols-rounded">code</span><span>Repo</span></a>
+                <a href="" target="_blank" style="font-weight: 600"><span class="material-symbols-rounded">description</span><span>Paper</span></a>
+                <a href="" target="_blank" style="font-weight: 600"><span class="material-symbols-rounded">format_quote</span><span>Talk</span></a>
+            </div>
+        </div>
+    </header>
+    <!-- <section class="teaser mt-2">
+        <video src="static/webui_intro.mp4" alt="A short slide animation showing the overivew of WebUI." data-no-pause autoplay playsinline muted loop></video>
+    </section> -->
+    
+    <!-- <section>
+        <h3 data-exclude-link><span>Video</span>
+            <div>
+                <a href="static/blobgan_slides.pptx" target="_blank" class="btn px-2 py-1 iconbutton btn-dark"><span class="me-1 material-symbols-rounded">file_download</span> Slides</a>
+            </div>
+        </h3>
+        <div class="wrapwrap">
+            <div class="videowrapper">
+                <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section> -->
+    
+    <section class="abstract">
+        <h3 data-exclude-link><span><span class="me-2 material-symbols-rounded"> palette </span>Summary</span></h3>
+        <p>
+            Enabling machines to understand structured visuals like slides and user interfaces is essential for making them accessible to people with disabilities. 
+            However, achieving such understanding computationally has required manual data collection and annotation, which is time-consuming and labor-intensive. 
+            To overcome this challenge, we present a method to generate synthetic, structured visuals with target labels using code generation. 
+            Our method allows people to create datasets with built-in labels and train models with a small number of human-annotated examples. 
+            We demonstrate performance improvements in three tasks for understanding slides and UIs: recognizing visual elements, describing visual content, and classifying visual content types.
+        </p>
+
+    </section>
+
+
+
+    <section class="method">
+        <h3 data-exclude-link><span><span class="me-2 material-symbols-rounded"> smart_toy </span>Learning Design Representation with Generative Code Semantics</span></h3>
+        <p>
+            DreamStruct constructs synthetically labeled datasets for visual design like slides and UIs by generating declariative and semantic code abstraction, where annotations are specified a priori, and visual elements are synthesized accordingly. 
+            The methodology is structured around three core design principles: adherence to common design guidelines, representation of prevalent visual design patterns, and alignment with targeted semantic labels. 
+            Our multi-stage pipeline operates as follows:
+            <ul>
+                <li><strong>Ideation:</strong> Design concepts are synthesized by prompting a large language model (LLM) with design guidelines and common patterns as well as the curated example sets, yielding diverse design representations.</li> 
+                <li><strong>Generation:</strong> The visual is programmatically generated as code for each design concept, with structured annotations embedded in the HTML for semantic labeling of visual elements, ensuring compliance with specified guidelines, patterns and targeted labels.</li>
+                <li><strong>Production:</strong> Placeholder visual elements are replaced with real-world data or AI-generated assets, followed by post-processing and filtering to ensure high-quality outputs. The resulting DreamStruct dataset encompasses around 20K annotated code-visual pairs with real-world data distributions and a diverse range of design patterns.</li>
+            </ul>              
+        </p>
+    </section>
+    
+
+    <section class="dataset">
+        <h3 data-exclude-link><span><span class="me-2 material-symbols-rounded"> dataset </span>Overview of Example Synthetic Datasets: DreamSlides and DreamUI</span></h3>
+        <p>
+            DreamStruct generated a total of 10,053 slide-code pairs (DreamSlides) and 9,774 UI-code pairs (DreamUI). 
+            The dataset includes highly detailed descriptions for slides and UIs, with each description averaging 57.23 words and containing 19.66 named entities, a substantial increase compared to human-annotated datasets, which average 5.74 words and 3.37 named entities. 
+            Element compositions, such as images, charts, and diagrams, remain consistent between DreamStruct and human-annotated datasets. 
+            For instance, DreamStruct samples contain an average of 2.32 images, 0.21 charts, and 0.24 diagrams per sample, while human-annotated samples feature 2.48 images, 0.07 charts, and 0.12 diagrams. 
+            The total number of elements per sample is nearly identical, with DreamStruct at 8.74 and human-annotated datasets at 8.83. 
+            Despite not explicitly controlling the distribution of element types during generation, the distribution in DreamStruct aligns closely with real-world datasets. 
+            One notable difference is the rare occurrence of the 'upper task bar' element in DreamStruct's UI samples, which typically displays time and internet signals but is less relevant to the core content of the UIs.
+        </p>
+
+    </section>
+    
+    <section class="app1">
+        <h3 data-exclude-link><span><span class="me-2 material-symbols-rounded"> shelf_position </span>Example Use Case of Design Modeling: Element Recognition</span></h3>
+        
+        <!-- <section class="teaser mt-2">
+            <img src="static/diagram_element_detection.png" alt="A short slide animation showing the overivew of WebUI."></image>
+        </section> -->
+        
+        <p>
+            Element recognition is a crucial task for understanding visual design, especially in slides and UIs. DreamStruct’s synthetic dataset provides a boost in model performance over human-annotated data by using the synthetic data as training or prtraining sources. 
+            For slide element recognition, models trained on our synthetic data achieved 55.3% mean Average Precision (mAP), compared to 44.3% on human-annotated datasets in the same data scale. 
+            In UI element recognition, we used a two-stage training approach, pretraining models on synthetic data and finetuning them with just 50 human-annotated samples. 
+            This method improved performance by 5.2%, showing that synthetic data can fill in gaps where real-world data is sparse or imbalanced.
+        </p>
+
+        <br aria-hidden="true"/>
+
+
+        <!-- <iframe src="https://biglab-webui-screenrecognition.hf.space" frameborder="0" width="1000" height="1100"></iframe> -->
+
+    </section>
+
+    <section class="app2">
+        <h3 data-exclude-link><span><span class="me-2 material-symbols-rounded">record_voice_over</span>Example Use Case of Design Modeling: Image Captioning</span></h3>
+        
+        <!-- <section class="teaser mt-2">
+            <img src="static/diagram_screen_classification.png" alt="A short slide animation showing the overivew of WebUI."></image>
+        </section> -->
+        
+        <p>
+            Image captioning helps generate descriptions for screenshots of slides and UIs, enabling better accessibility for blind and low-vision users. 
+            We compared models trained on DreamStruct’s synthetic datasets with others fine-tuned on human-written captions. 
+            Our model outperformed baselines, achieving a 77.9% win rate over competing models for slide captioning and a 64.8% win rate for UI captioning. 
+            When against GPT-4V, a state-of-the-art model, our smaller model achieved 31.6% and 37.3% win rates for slides and UIs, respectively. 
+            Our results show the impact of our synthetic data in training models capable of generating more relevant and detailed captions and improve open model capabilities.
+        </p>
+
+        <br aria-hidden="true"/>
+
+        <!-- <iframe
+        src="https://biglab-webui-screenclassification.hf.space"
+        frameborder="0"
+        width="1000"
+        height="550"
+    ></iframe> -->
+
+    </section>
+
+    <section class="app3">
+        <h3 data-exclude-link><span><span class="me-2 material-symbols-rounded"> hdr_strong </span>Example Use Case of Design Modeling: Image Classification</span></h3>
+        
+        <!-- <section class="teaser mt-2">
+            <img src="static/diagram_screen_similarity.png" alt="A short slide animation showing the overivew of WebUI."></image>
+        </section> -->
+        
+        <p>
+            Image classification is key to identifying themes and visual patterns in slides and UIs. 
+            DreamStruct allows models to classify slides with an accuracy of 67.9%, significantly higher than the 33.5% accuracy of models trained on human-annotated datasets. 
+            Similarly, UI classification accuracy rose to 55.2% when trained with synthetic data, compared to 31% with human-annotated data. 
+            By using a larger, more diverse dataset, our method helps models recognize design elements in ways that generalize well across both slides and UIs. 
+            Despite synthetic data's advantages, proprietary models like GPT-4V still lead in performance, but DreamStruct’s data closes the gap.
+        </p>
+
+        
+
+        <br aria-hidden="true"/>
+
+        
+        <!-- <a href="">[Hugging Face Demo Coming Soon]</a> -->
+        <!-- <iframe
+        src="https://biglab-webui-screensim.hf.space"
+        frameborder="0"
+        width="1000"
+        height="1000"
+    ></iframe> -->
+
+    </section>
+
+
+
+    <section id="citation">
+        <h3 data-exclude-link><span><span class="me-1 material-symbols-rounded">quick_reference_all</span>Reference</span>
+            <!-- <div>
+                <a href="static/blobgan_paper.pdf" target="_blank" class="btn px-2 py-1 iconbutton btn-dark"><span class="me-1 material-symbols-rounded">file_download</span> Paper PDF</a>
+            </div> -->
+        </h3>
+        <div class="cit_cont">
+        <pre class="cit">@inproceedings{peng2024dreamstruct,
+        title={DreamStruct: Understanding Slides and User Interfaces via Synthetic Data Generation},
+        author={Peng, Yi-Hao and Huq, Faria and Jiang, Yue and Wu, Jason and Li, Amanda Xin Yue and Bigham, Jeffrey and Pavel, Amy},
+        booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+        year={2024}
+}</pre>
+        </div>
+    </section>
+    <section>
+        <h3 data-exclude-link>
+            <div><span data-text="volunteer_activism" class=" me-2 material-symbols-rounded">partner_exchange
+</span><span data-text="Acknowledgements">Acknowledgements</span>
+            </div>
+        </h3>
+        <p>
+            This work was funded in part by the National Science Foundation.
+        </p>
+        <p>
+            This webpage template was inspired by <a href="https://dave.ml/blobgan/">the BlobGAN project</a>.
+        </p>
+    </section>
+</main>
+
+
+
+</body>
+</html>
